@@ -1,0 +1,3 @@
+'''
+Mathematical methods for integration.
+'''
