@@ -15,8 +15,8 @@ if __name__ == '__main__':
   # TRUE VALUE - START
   test_start = prt.init_test(msgLength, 'valor real')[1]
 
-  x0 = 0.
-  x1 = 2.
+  x0 = 4.
+  x1 = 20.
   prt.system_message(f'f({x0}) = {func(x0)}, f({x1}) = {func(x1)}')
   prt.system_message(f"f'({x0}) = {func_diff(x0)}, f'({x1}) = {func_diff(x1)}")
   prt.system_message(f'Integral de f(x) de {x0} a {x1} = {func_integration(x0, x1): 1.2f}')
@@ -35,7 +35,7 @@ if __name__ == '__main__':
   truef1 = func_diff(x1)
   err1 = relative_error(truef1, f1)
 
-  prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'(x1) = {f1} ({err1*100: 1.2f}%)")
+  prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'({x1}) = {f1} ({err1*100: 1.2f}%)")
 
   test_end = prt.end_test(msgLength)
   # BFD - END
@@ -50,7 +50,7 @@ if __name__ == '__main__':
   truef1 = func_diff(x1)
   err1 = relative_error(truef1, f1)
 
-  prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'(x1) = {f1} ({err1*100: 1.2f}%)")
+  prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'({x1}) = {f1} ({err1*100: 1.2f}%)")
 
   test_end = prt.end_test(msgLength)
   # FFD - END
@@ -65,7 +65,7 @@ if __name__ == '__main__':
   truef1 = func_diff(x1)
   err1 = relative_error(truef1, f1)
 
-  prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'(x1) = {f1} ({err1*100: 1.2f}%)")
+  prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'({x1}) = {f1} ({err1*100: 1.2f}%)")
   test_end = prt.end_test(msgLength)
   # CFD - END
 
