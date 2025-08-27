@@ -5,6 +5,7 @@ Treino de cálculo numérico
 from functions import *
 import prompt as prt
 from methods import differentiation as diff
+from methods import integration as inter
 from methods.error import relative_error
 
 # main routine
@@ -39,7 +40,6 @@ if __name__ == '__main__':
 
   test_end = prt.end_test(msgLength)
   # BFD - END
-
   # FFD - START
   test_start = prt.init_test(msgLength, 'ffd')
   f0 = diff.FFD(func, x0)
@@ -54,7 +54,6 @@ if __name__ == '__main__':
 
   test_end = prt.end_test(msgLength)
   # FFD - END
-
   # CFD - START
   test_start = prt.init_test(msgLength, 'CFD')
   f0 = diff.CFD(func, x0)
@@ -68,5 +67,14 @@ if __name__ == '__main__':
   prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'({x1}) = {f1} ({err1*100: 1.2f}%)")
   test_end = prt.end_test(msgLength)
   # CFD - END
+  # Integration
+  # Simpson - START
+  test_start = prt.init_test(msgLength, 'INTER - Simpson')
+  f0 = inter.simpson(func, x0, x1)
+  truef0 = func_integration(x0, x1)
+  err0 = relative_error(truef0, f0)
+
+  prt.system_message(f"int f from {x0} to {x1} = {f0} ({err0*100: 1.2f}%)")
+  test_end = prt.end_test(msgLength)
 
   finalization = prt.end_application(msgLength)
