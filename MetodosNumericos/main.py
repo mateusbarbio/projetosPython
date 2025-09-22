@@ -84,7 +84,5 @@ if __name__ == '__main__':
 
   prt.used_time('SIMPSON', test_end - test_start)
   # Simpson - END
-
-
-
+  
   finalization = prt.end_application(msgLength)
