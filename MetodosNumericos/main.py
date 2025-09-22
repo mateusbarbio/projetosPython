@@ -27,7 +27,7 @@ if __name__ == '__main__':
   prt.used_time('test', test_end - test_start)
   # TRUE VALUE - END
   # BFD - START
-  test_start = prt.init_test(msgLength, 'bfd')
+  test_start = prt.init_test(msgLength, 'bfd')[1]
   f0 = diff.BFD(func, x0)
   truef0 = func_diff(x0)
   err0 = relative_error(truef0, f0)
@@ -38,10 +38,11 @@ if __name__ == '__main__':
 
   prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'({x1}) = {f1} ({err1*100: 1.2f}%)")
 
-  test_end = prt.end_test(msgLength)
+  test_end = prt.end_test(msgLength)[1]
+  prt.used_time('BFD', test_end - test_start)
   # BFD - END
   # FFD - START
-  test_start = prt.init_test(msgLength, 'ffd')
+  test_start = prt.init_test(msgLength, 'ffd')[1]
   f0 = diff.FFD(func, x0)
   truef0 = func_diff(x0)
   err0 = relative_error(truef0, f0)
@@ -52,10 +53,12 @@ if __name__ == '__main__':
 
   prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'({x1}) = {f1} ({err1*100: 1.2f}%)")
 
-  test_end = prt.end_test(msgLength)
+  test_end = prt.end_test(msgLength)[1]
+
+  prt.used_time('FFD', test_end - test_start)
   # FFD - END
   # CFD - START
-  test_start = prt.init_test(msgLength, 'CFD')
+  test_start = prt.init_test(msgLength, 'CFD')[1]
   f0 = diff.CFD(func, x0)
   truef0 = func_diff(x0)
   err0 = relative_error(truef0, f0)
@@ -65,16 +68,23 @@ if __name__ == '__main__':
   err1 = relative_error(truef1, f1)
 
   prt.system_message(f"f'({x0}) = {f0} ({err0*100: 1.2f}%), f'({x1}) = {f1} ({err1*100: 1.2f}%)")
-  test_end = prt.end_test(msgLength)
+  test_end = prt.end_test(msgLength)[1]
+
+  prt.used_time('CFD', test_end - test_start)
   # CFD - END
   # Integration
   # Simpson - START
-  test_start = prt.init_test(msgLength, 'INTER - Simpson')
+  test_start = prt.init_test(msgLength, 'INTER - Simpson')[1]
   f0 = inter.simpson(func, x0, x1)
   truef0 = func_integration(x0, x1)
   err0 = relative_error(truef0, f0)
 
-  prt.system_message(f"int f from {x0} to {x1} = {f0} ({err0*100: 1.2f}%)")
-  test_end = prt.end_test(msgLength)
+  prt.system_message(f"Integral de f(x) de {x0} a {x1} = {f0: 1.4f} ({err0*100: 1.2f}%)")
+  test_end = prt.end_test(msgLength)[1]
+
+  prt.used_time('SIMPSON', test_end - test_start)
+  # Simpson - END
+
+
 
   finalization = prt.end_application(msgLength)

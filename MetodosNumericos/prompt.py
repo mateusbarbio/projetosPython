@@ -48,5 +48,5 @@ def end_test(totalLength):
   return msg, tf
 
 def used_time(name, time):
-  msg = f'{name.upper()} - {time.total_seconds()} s'
+  msg = f'{name.upper()} ::> {time.total_seconds()} s'
   system_message(msg)
