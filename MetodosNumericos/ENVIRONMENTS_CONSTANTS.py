@@ -22,7 +22,7 @@ TIME_FORMAT = '%H:%M'
 FULL_TIME_FORMAT = '%d/%m/%y %H:%M'
 
 # Methods constants
-PRECISION = 1e-2
+PRECISION = 1e-1
 
 if __name__ == '__main__':
   pass
